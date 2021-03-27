@@ -1,0 +1,158 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://menu/assets/logo_1.png" type="Texture" id=2]
+[ext_resource path="res://menu/buttons/NewGameButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://menu/buttons/QuitButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menu/fade_in/FadeIn.tscn" type="PackedScene" id=8]
+[ext_resource path="res://menu/Main_menu.gd" type="Script" id=9]
+[ext_resource path="res://menu/VideoPlayer.gd" type="Script" id=10]
+[ext_resource path="res://menu/assets/present_background.webm" type="VideoStream" id=11]
+[ext_resource path="res://menu/assets/8-BIT WONDER.TTF" type="DynamicFontData" id=12]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends HBoxContainer
+
+
+export(Array, Texture) var characters
+export(Array, String) var quotes
+
+onready var character = get_node(\"Character\")
+onready var quote = get_node(\"MarginContainer/Label\")
+onready var tween = get_node(\"Tween\")
+
+
+func _ready():
+	randomize()
+	var idx = randi() % 3
+	character.texture = characters[idx]
+	quote.text = quotes[idx]
+	anim_quote()
+
+
+func anim_quote():
+	quote.percent_visible = 0
+	tween.interpolate_property(quote, \"percent_visible\", 0, 1, 2)
+	tween.start()
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+outline_size = 2
+font_data = ExtResource( 12 )
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 11 )
+autoplay = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_right = 460.0
+margin_bottom = 320.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+visible = false
+margin_right = 1040.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_right = 460.0
+margin_bottom = 320.0
+size_flags_vertical = 3
+custom_constants/separation = 100
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 360.0
+margin_bottom = 320.0
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 90.0
+margin_right = 360.0
+margin_bottom = 150.0
+scene_to_load = "res://game_screen/GameScreen.tscn"
+
+[node name="QuitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 170.0
+margin_right = 360.0
+margin_bottom = 230.0
+
+[node name="Characters" type="HBoxContainer" parent="Menu/CenterRow"]
+margin_left = 460.0
+margin_right = 460.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = SubResource( 1 )
+characters = [ null, null, null ]
+quotes = [ "Veni, Sancte Spiritus, Et emitte coelitus Lucis tuae radium.", "Don’t Let Yesterday Take Up Too Much Of Today.", "Logic is the beginning of wisdom, not the end." ]
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/CenterRow/Characters"]
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = -60
+
+[node name="Label" type="Label" parent="Menu/CenterRow/Characters/MarginContainer"]
+visible = false
+margin_right = 60.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "This is where quotes will appear."
+align = 2
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="TextureRect" parent="Menu/CenterRow/Characters"]
+visible = false
+margin_left = 292.0
+margin_right = 580.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 6
+flip_h = true
+
+[node name="Tween" type="Tween" parent="Menu/CenterRow/Characters"]
+
+[node name="FadeIn" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
+autoplay = true
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+[connection signal="finished" from="VideoPlayer" to="VideoPlayer" method="_on_VideoPlayer_finished"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
+[connection signal="finished" from="Music" to="." method="_on_AudioStreamPlayer_finished"]
