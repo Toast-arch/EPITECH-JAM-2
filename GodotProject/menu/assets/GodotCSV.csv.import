@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://menu/assets/GodotCSV.en.translation", "res://menu/assets/GodotCSV.de.translation", "res://menu/assets/GodotCSV.fr.translation", "res://menu/assets/GodotCSV.es.translation" ]
+
+source_file="res://menu/assets/GodotCSV.csv"
+dest_files=[ "res://menu/assets/GodotCSV.en.translation", "res://menu/assets/GodotCSV.de.translation", "res://menu/assets/GodotCSV.fr.translation", "res://menu/assets/GodotCSV.es.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

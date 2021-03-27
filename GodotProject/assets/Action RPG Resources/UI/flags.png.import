@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/logo_1.png-56c0e14b105d9bcbfd7a7b43ccac61e4.stex"
+path="res://.import/flags.png-7eb9b19f6ffce71be27f19d17bc1aaae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu/assets/logo_1.png"
-dest_files=[ "res://.import/logo_1.png-56c0e14b105d9bcbfd7a7b43ccac61e4.stex" ]
+source_file="res://assets/Action RPG Resources/UI/flags.png"
+dest_files=[ "res://.import/flags.png-7eb9b19f6ffce71be27f19d17bc1aaae.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

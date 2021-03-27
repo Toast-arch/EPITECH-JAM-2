@@ -1,44 +1,54 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://menu/assets/logo_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Action RPG Resources/Player/Player.png" type="Texture" id=1]
+[ext_resource path="res://assets/Action RPG Resources/UI/flags.png" type="Texture" id=2]
 [ext_resource path="res://menu/buttons/NewGameButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menu/buttons/QuitButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Action RPG Resources/World/GrassBackground.png" type="Texture" id=5]
+[ext_resource path="res://assets/Action RPG Resources/World/DirtTileset.png" type="Texture" id=6]
 [ext_resource path="res://menu/fade_in/FadeIn.tscn" type="PackedScene" id=8]
 [ext_resource path="res://menu/Main_menu.gd" type="Script" id=9]
-[ext_resource path="res://menu/VideoPlayer.gd" type="Script" id=10]
-[ext_resource path="res://menu/assets/present_background.webm" type="VideoStream" id=11]
-[ext_resource path="res://menu/assets/8-BIT WONDER.TTF" type="DynamicFontData" id=12]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends HBoxContainer
+[sub_resource type="TileSet" id=1]
+0/name = "DirtTileset.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 176, 80 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 432, Vector2( 0, 1 ), 438, Vector2( 0, 2 ), 54, Vector2( 0, 3 ), 48, Vector2( 1, 0 ), 504, Vector2( 1, 1 ), 511, Vector2( 1, 2 ), 63, Vector2( 1, 3 ), 56, Vector2( 2, 0 ), 216, Vector2( 2, 1 ), 219, Vector2( 2, 2 ), 27, Vector2( 2, 3 ), 24, Vector2( 3, 0 ), 144, Vector2( 3, 1 ), 146, Vector2( 3, 2 ), 18, Vector2( 3, 3 ), 16, Vector2( 4, 0 ), 176, Vector2( 4, 1 ), 182, Vector2( 4, 2 ), 434, Vector2( 4, 3 ), 50, Vector2( 4, 4 ), 178, Vector2( 5, 0 ), 248, Vector2( 5, 1 ), 255, Vector2( 5, 2 ), 507, Vector2( 5, 3 ), 59, Vector2( 5, 4 ), 251, Vector2( 6, 0 ), 440, Vector2( 6, 1 ), 447, Vector2( 6, 2 ), 510, Vector2( 6, 3 ), 62, Vector2( 6, 4 ), 446, Vector2( 7, 0 ), 184, Vector2( 7, 1 ), 155, Vector2( 7, 2 ), 218, Vector2( 7, 3 ), 26, Vector2( 7, 4 ), 154, Vector2( 8, 0 ), 184, Vector2( 8, 1 ), 191, Vector2( 8, 2 ), 506, Vector2( 8, 3 ), 58, Vector2( 8, 4 ), 186, Vector2( 9, 0 ), 443, Vector2( 9, 1 ), 254, Vector2( 9, 2 ), 442, Vector2( 9, 3 ), 190, Vector2( 10, 2 ), 250, Vector2( 10, 3 ), 187 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
-
-export(Array, Texture) var characters
-export(Array, String) var quotes
-
-onready var character = get_node(\"Character\")
-onready var quote = get_node(\"MarginContainer/Label\")
-onready var tween = get_node(\"Tween\")
-
-
-func _ready():
-	randomize()
-	var idx = randi() % 3
-	character.texture = characters[idx]
-	quote.text = quotes[idx]
-	anim_quote()
-
-
-func anim_quote():
-	quote.percent_visible = 0
-	tween.interpolate_property(quote, \"percent_visible\", 0, 1, 2)
-	tween.start()
-"
-
-[sub_resource type="DynamicFont" id=2]
-size = 12
-outline_size = 2
-font_data = ExtResource( 12 )
+[sub_resource type="Animation" id=2]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -48,111 +58,115 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VideoPlayer" type="VideoPlayer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-stream = ExtResource( 11 )
-autoplay = true
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 262157, 0, 0, 262158, 0, 1, 262159, 0, 1, 262160, 0, 1, 262161, 0, 1, 262162, 0, 1, 262163, 0, 1, 262164, 0, 2, 327690, 0, 0, 327691, 0, 1, 327692, 0, 1, 327693, 0, 131078, 327694, 0, 65541, 327695, 0, 131073, 327696, 0, 131073, 327697, 0, 131073, 327698, 0, 131073, 327699, 0, 131073, 327700, 0, 131074, 393224, 0, 0, 393225, 0, 1, 393226, 0, 65545, 393227, 0, 131073, 393228, 0, 131073, 393229, 0, 131073, 393230, 0, 131074, 458759, 0, 0, 458760, 0, 131078, 458761, 0, 65541, 458762, 0, 131074, 524292, 0, 0, 524293, 0, 1, 524294, 0, 1, 524295, 0, 65545, 524296, 0, 131073, 524297, 0, 131074, 655359, 0, 0, 589824, 0, 1, 589825, 0, 1, 589826, 0, 1, 589827, 0, 1, 589828, 0, 131078, 589829, 0, 65541, 589830, 0, 131073, 589831, 0, 131074, 720895, 0, 65536, 655360, 0, 65537, 655361, 0, 65541, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131074, 786431, 0, 131072, 720896, 0, 131073, 720897, 0, 131074 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
-margin_right = 460.0
-margin_bottom = 320.0
+margin_left = 10.0
+margin_bottom = 180.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="Menu"]
-visible = false
-margin_right = 1040.0
-margin_bottom = 80.0
-texture = ExtResource( 2 )
-stretch_mode = 4
-
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
-margin_right = 460.0
-margin_bottom = 320.0
+margin_right = 180.0
+margin_bottom = 180.0
 size_flags_vertical = 3
 custom_constants/separation = 100
-alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_right = 360.0
-margin_bottom = 320.0
+margin_right = 180.0
+margin_bottom = 180.0
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
 
 [node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
-margin_top = 90.0
-margin_right = 360.0
-margin_bottom = 150.0
+margin_top = 35.0
+margin_right = 180.0
+margin_bottom = 60.0
 scene_to_load = "res://game_screen/GameScreen.tscn"
 
 [node name="QuitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 170.0
-margin_right = 360.0
-margin_bottom = 230.0
+margin_top = 80.0
+margin_right = 180.0
+margin_bottom = 105.0
 
-[node name="Characters" type="HBoxContainer" parent="Menu/CenterRow"]
-margin_left = 460.0
-margin_right = 460.0
-margin_bottom = 320.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-script = SubResource( 1 )
-characters = [ null, null, null ]
-quotes = [ "Veni, Sancte Spiritus, Et emitte coelitus Lucis tuae radium.", "Don’t Let Yesterday Take Up Too Much Of Today.", "Logic is the beginning of wisdom, not the end." ]
-
-[node name="MarginContainer" type="MarginContainer" parent="Menu/CenterRow/Characters"]
-margin_bottom = 320.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = -60
-
-[node name="Label" type="Label" parent="Menu/CenterRow/Characters/MarginContainer"]
-visible = false
-margin_right = 60.0
-margin_bottom = 320.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-text = "This is where quotes will appear."
-align = 2
-valign = 1
-autowrap = true
+[node name="FlagsSelector" type="HBoxContainer" parent="Menu/CenterRow/Buttons"]
+margin_top = 150.0
+margin_right = 90.0
+margin_bottom = 145.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Character" type="TextureRect" parent="Menu/CenterRow/Characters"]
-visible = false
-margin_left = 292.0
-margin_right = 580.0
-margin_bottom = 496.0
+[node name="Button" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
+margin_right = 27.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch_mode = 6
-flip_h = true
+flat = true
 
-[node name="Tween" type="Tween" parent="Menu/CenterRow/Characters"]
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/Button"]
+position = Vector2( 14, 11 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 2 )
+vframes = 248
+frame = 83
+
+[node name="Button2" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
+margin_left = 31.0
+margin_right = 58.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+flat = true
+
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/Button2"]
+position = Vector2( 14, 11 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 2 )
+vframes = 248
+frame = 83
+
+[node name="Button3" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
+margin_left = 62.0
+margin_right = 90.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+flat = true
+
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/Button3"]
+position = Vector2( 14, 11 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 2 )
+vframes = 248
+frame = 83
+
+[node name="Character2D" type="Node2D" parent="Menu/CenterRow"]
+position = Vector2( 231.493, 92.1733 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Character2D"]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+hframes = 60
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/CenterRow/Character2D"]
+method_call_mode = 1
+anims/MenuRun = SubResource( 2 )
 
 [node name="FadeIn" parent="." instance=ExtResource( 8 )]
 visible = false
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-volume_db = -30.0
-autoplay = true
-
-[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
-[connection signal="finished" from="VideoPlayer" to="VideoPlayer" method="_on_VideoPlayer_finished"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
-[connection signal="finished" from="Music" to="." method="_on_AudioStreamPlayer_finished"]

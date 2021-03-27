@@ -3,15 +3,20 @@ extends Control
 var scene_path
 var quit = false
 
-onready var music = get_node("Music")
-onready var button_sound = get_node("ButtonSound")
+#onready var music = get_node("Music")
+#onready var button_sound = get_node("ButtonSound")
+onready var animationPlayer = $Menu/CenterRow/Character2D/AnimationPlayer
+onready var newgamebutton = $Menu/CenterRow/Buttons/NewGameButton
+onready var quitbutton = $Menu/CenterRow/Buttons/QuitButton
 
 func _ready():
-	for button in $Menu/CenterRow/Buttons.get_children():
-		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+	animationPlayer.play("MenuRun")
+	
+	newgamebutton.connect("pressed", self, "_on_Button_pressed", [newgamebutton.scene_to_load])
+	quitbutton.connect("pressed", self, "_on_Button_pressed", [quitbutton.scene_to_load])
 
 func _on_Button_pressed(scene_to_load):
-	button_sound.play()
+	#button_sound.play()
 	scene_path = scene_to_load
 	$FadeIn.show()
 	$FadeIn.fade_in()
@@ -25,11 +30,12 @@ func _on_FadeIn_fade_finished():
 		$FadeIn.hide()
 
 func _on_QuitButton_pressed():
-	button_sound.play()
+	#button_sound.play()
 	quit = true
 	$FadeIn.show()
 	$FadeIn.fade_in()
 
 
 func _on_AudioStreamPlayer_finished():
-	music.play()
+	pass
+	#music.play()
