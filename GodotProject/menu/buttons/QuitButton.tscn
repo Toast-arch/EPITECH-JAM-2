@@ -6,4 +6,4 @@
 scene_to_load = "NONE"
 
 [node name="Label" parent="." index="0"]
-text = "Quit"
+text = "quit"

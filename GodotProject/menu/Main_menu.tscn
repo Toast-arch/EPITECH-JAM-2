@@ -1,38 +1,18 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Action RPG Resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://assets/Action RPG Resources/UI/flags.png" type="Texture" id=2]
 [ext_resource path="res://menu/buttons/NewGameButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menu/buttons/QuitButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Action RPG Resources/World/GrassBackground.png" type="Texture" id=5]
-[ext_resource path="res://assets/Action RPG Resources/World/DirtTileset.png" type="Texture" id=6]
+[ext_resource path="res://game_screen/WorldScenes/PathTileMap.tres" type="TileSet" id=6]
+[ext_resource path="res://menu/assets/customfont_1_24.tres" type="DynamicFont" id=7]
 [ext_resource path="res://menu/fade_in/FadeIn.tscn" type="PackedScene" id=8]
 [ext_resource path="res://menu/Main_menu.gd" type="Script" id=9]
-
-[sub_resource type="TileSet" id=1]
-0/name = "DirtTileset.png 0"
-0/texture = ExtResource( 6 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 176, 80 )
-0/tile_mode = 1
-0/autotile/bitmask_mode = 1
-0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 432, Vector2( 0, 1 ), 438, Vector2( 0, 2 ), 54, Vector2( 0, 3 ), 48, Vector2( 1, 0 ), 504, Vector2( 1, 1 ), 511, Vector2( 1, 2 ), 63, Vector2( 1, 3 ), 56, Vector2( 2, 0 ), 216, Vector2( 2, 1 ), 219, Vector2( 2, 2 ), 27, Vector2( 2, 3 ), 24, Vector2( 3, 0 ), 144, Vector2( 3, 1 ), 146, Vector2( 3, 2 ), 18, Vector2( 3, 3 ), 16, Vector2( 4, 0 ), 176, Vector2( 4, 1 ), 182, Vector2( 4, 2 ), 434, Vector2( 4, 3 ), 50, Vector2( 4, 4 ), 178, Vector2( 5, 0 ), 248, Vector2( 5, 1 ), 255, Vector2( 5, 2 ), 507, Vector2( 5, 3 ), 59, Vector2( 5, 4 ), 251, Vector2( 6, 0 ), 440, Vector2( 6, 1 ), 447, Vector2( 6, 2 ), 510, Vector2( 6, 3 ), 62, Vector2( 6, 4 ), 446, Vector2( 7, 0 ), 184, Vector2( 7, 1 ), 155, Vector2( 7, 2 ), 218, Vector2( 7, 3 ), 26, Vector2( 7, 4 ), 154, Vector2( 8, 0 ), 184, Vector2( 8, 1 ), 191, Vector2( 8, 2 ), 506, Vector2( 8, 3 ), 58, Vector2( 8, 4 ), 186, Vector2( 9, 0 ), 443, Vector2( 9, 1 ), 254, Vector2( 9, 2 ), 442, Vector2( 9, 3 ), 190, Vector2( 10, 2 ), 250, Vector2( 10, 3 ), 187 ]
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 16, 16 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
+[ext_resource path="res://game_screen/WorldScenes/Bush.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_screen/WorldScenes/CliffTileMap.tres" type="TileSet" id=11]
+[ext_resource path="res://game_screen/WorldScenes/Tree.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_screen/WorldScenes/Grass.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=2]
 length = 0.6
@@ -58,93 +38,219 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 320, 180 )
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
+[node name="GrassTiles" type="TileMap" parent="."]
+tile_set = ExtResource( 6 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 262157, 0, 0, 262158, 0, 1, 262159, 0, 1, 262160, 0, 1, 262161, 0, 1, 262162, 0, 1, 262163, 0, 1, 262164, 0, 2, 327690, 0, 0, 327691, 0, 1, 327692, 0, 1, 327693, 0, 131078, 327694, 0, 65541, 327695, 0, 131073, 327696, 0, 131073, 327697, 0, 131073, 327698, 0, 131073, 327699, 0, 131073, 327700, 0, 131074, 393224, 0, 0, 393225, 0, 1, 393226, 0, 65545, 393227, 0, 131073, 393228, 0, 131073, 393229, 0, 131073, 393230, 0, 131074, 458759, 0, 0, 458760, 0, 131078, 458761, 0, 65541, 458762, 0, 131074, 524292, 0, 0, 524293, 0, 1, 524294, 0, 1, 524295, 0, 65545, 524296, 0, 131073, 524297, 0, 131074, 655359, 0, 0, 589824, 0, 1, 589825, 0, 1, 589826, 0, 1, 589827, 0, 1, 589828, 0, 131078, 589829, 0, 65541, 589830, 0, 131073, 589831, 0, 131074, 720895, 0, 65536, 655360, 0, 65537, 655361, 0, 65541, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131074, 786431, 0, 131072, 720896, 0, 131073, 720897, 0, 131074 )
 
+[node name="WallMap" type="TileMap" parent="."]
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 196608, 1, 0, 196609, 2, 0, 6, 3, 0, 1, 4, 0, 1, 5, 0, 1, 6, 0, 1, 7, 0, 5, 8, 0, 196609, 9, 0, 196610, 65538, 0, 131072, 65539, 0, 131073, 65540, 0, 131073, 65541, 0, 131073, 65542, 0, 131073, 65543, 0, 131074 )
+
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_left = 10.0
-margin_bottom = 180.0
-alignment = 1
+margin_right = 320.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Bushes" type="Node2D" parent="Menu"]
+
+[node name="Bush" parent="Menu/Bushes" instance=ExtResource( 10 )]
+position = Vector2( 182, 152 )
+
+[node name="Bush2" parent="Menu/Bushes" instance=ExtResource( 10 )]
+position = Vector2( 286, 168 )
+
+[node name="Bush3" parent="Menu/Bushes" instance=ExtResource( 10 )]
+position = Vector2( 230, 136 )
+
+[node name="Bush4" parent="Menu/Bushes" instance=ExtResource( 10 )]
+position = Vector2( 122.465, 75.6106 )
+
+[node name="Trees" type="Node2D" parent="Menu"]
+
+[node name="Tree" parent="Menu/Trees" instance=ExtResource( 12 )]
+position = Vector2( 288.847, 51.6322 )
+
+[node name="Tree2" parent="Menu/Trees" instance=ExtResource( 12 )]
+position = Vector2( 9.14874, 50.3079 )
+
+[node name="Grass" type="Node2D" parent="Menu"]
+
+[node name="Grass" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 160.476, 71.9512 )
+
+[node name="Grass2" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 178.222, 71.9512 )
+
+[node name="Grass3" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 178.222, 71.9512 )
+
+[node name="Grass4" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 256.357, 40.4323 )
+
+[node name="Grass5" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 45.524, 40.1674 )
+
+[node name="Grass6" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 45.2592, 54.735 )
+
+[node name="Grass7" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 278.606, 105.059 )
+
+[node name="Grass8" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 295.822, 105.589 )
+
+[node name="Grass9" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 175.043, 119.892 )
+
+[node name="Grass10" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 78.6322, 105.324 )
+
+[node name="Grass11" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 93.7295, 119.627 )
+
+[node name="Grass12" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 120.481, 171.276 )
+
+[node name="Grass13" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 137.962, 171.011 )
+
+[node name="Grass14" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 202.854, 172.07 )
+
+[node name="Grass15" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 238.876, 171.806 )
+
+[node name="Grass16" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 256.092, 171.541 )
+
+[node name="Grass17" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 18.7726, 69.0377 )
+
+[node name="Grass20" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 18.7726, 69.0377 )
+
+[node name="Grass18" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 1.82121, 94.7297 )
+
+[node name="Grass19" parent="Menu/Grass" instance=ExtResource( 13 )]
+position = Vector2( 2.35093, 131.016 )
+
+[node name="Title" type="Label" parent="Menu"]
+margin_right = 310.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_shadow = Color( 0, 0.529412, 1, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 3
+text = "BATTLE DUO"
+align = 1
+
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
-margin_right = 180.0
-margin_bottom = 180.0
+margin_top = 54.0
+margin_right = 310.0
+margin_bottom = 176.0
 size_flags_vertical = 3
 custom_constants/separation = 100
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
 margin_right = 180.0
-margin_bottom = 180.0
+margin_bottom = 122.0
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
 
-[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
-margin_top = 35.0
+[node name="MainButtons" type="VBoxContainer" parent="Menu/CenterRow/Buttons"]
+margin_top = 14.0
 margin_right = 180.0
-margin_bottom = 60.0
+margin_bottom = 68.0
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons/MainButtons" instance=ExtResource( 3 )]
+margin_right = 180.0
 scene_to_load = "res://game_screen/GameScreen.tscn"
 
-[node name="QuitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 80.0
+[node name="QuitButton" parent="Menu/CenterRow/Buttons/MainButtons" instance=ExtResource( 4 )]
+margin_top = 29.0
 margin_right = 180.0
-margin_bottom = 105.0
+margin_bottom = 54.0
 
 [node name="FlagsSelector" type="HBoxContainer" parent="Menu/CenterRow/Buttons"]
-margin_top = 150.0
-margin_right = 90.0
-margin_bottom = 145.0
+margin_top = 88.0
+margin_right = 110.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 110, 20 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
-margin_right = 27.0
+[node name="EnButton" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
+margin_right = 24.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 flat = true
 
-[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/Button"]
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/EnButton"]
 position = Vector2( 14, 11 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 2 )
 vframes = 248
-frame = 83
+frame = 91
 
-[node name="Button2" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
-margin_left = 31.0
-margin_right = 58.0
+[node name="FrButton" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
+margin_left = 28.0
+margin_right = 53.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 flat = true
 
-[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/Button2"]
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/FrButton"]
 position = Vector2( 14, 11 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 2 )
 vframes = 248
-frame = 83
+frame = 89
 
-[node name="Button3" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
-margin_left = 62.0
-margin_right = 90.0
+[node name="DeButton" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
+margin_left = 57.0
+margin_right = 81.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 flat = true
 
-[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/Button3"]
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/DeButton"]
+position = Vector2( 14, 11 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 2 )
+vframes = 248
+frame = 72
+
+[node name="EsButton" type="Button" parent="Menu/CenterRow/Buttons/FlagsSelector"]
+margin_left = 85.0
+margin_right = 110.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+toggle_mode = true
+flat = true
+
+[node name="Sprite" type="Sprite" parent="Menu/CenterRow/Buttons/FlagsSelector/EsButton"]
 position = Vector2( 14, 11 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 2 )
@@ -152,7 +258,7 @@ vframes = 248
 frame = 83
 
 [node name="Character2D" type="Node2D" parent="Menu/CenterRow"]
-position = Vector2( 231.493, 92.1733 )
+position = Vector2( 246, 50 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -168,5 +274,9 @@ anims/MenuRun = SubResource( 2 )
 
 [node name="FadeIn" parent="." instance=ExtResource( 8 )]
 visible = false
-[connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/MainButtons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/FlagsSelector/EnButton" to="." method="_on_EnButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/FlagsSelector/FrButton" to="." method="_on_FrButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/FlagsSelector/DeButton" to="." method="_on_DeButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/FlagsSelector/EsButton" to="." method="_on_EsButton_pressed"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

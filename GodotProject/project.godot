@@ -109,6 +109,10 @@ ui_attack={
 2d_physics/layer_2="character"
 2d_physics/layer_3="timecase_inside"
 
+[locale]
+
+translations=PoolStringArray( "res://menu/assets/GodotCSV.de.translation", "res://menu/assets/GodotCSV.en.translation", "res://menu/assets/GodotCSV.es.translation", "res://menu/assets/GodotCSV.fr.translation" )
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

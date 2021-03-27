@@ -6,8 +6,8 @@ var quit = false
 #onready var music = get_node("Music")
 #onready var button_sound = get_node("ButtonSound")
 onready var animationPlayer = $Menu/CenterRow/Character2D/AnimationPlayer
-onready var newgamebutton = $Menu/CenterRow/Buttons/NewGameButton
-onready var quitbutton = $Menu/CenterRow/Buttons/QuitButton
+onready var newgamebutton = $Menu/CenterRow/Buttons/MainButtons/NewGameButton
+onready var quitbutton = $Menu/CenterRow/Buttons/MainButtons/QuitButton
 
 func _ready():
 	animationPlayer.play("MenuRun")
@@ -39,3 +39,15 @@ func _on_QuitButton_pressed():
 func _on_AudioStreamPlayer_finished():
 	pass
 	#music.play()
+
+func _on_EnButton_pressed():
+	TranslationServer.set_locale("en")
+
+func _on_FrButton_pressed():
+	TranslationServer.set_locale("fr")
+
+func _on_DeButton_pressed():
+	TranslationServer.set_locale("de")
+
+func _on_EsButton_pressed():
+	TranslationServer.set_locale("es")
