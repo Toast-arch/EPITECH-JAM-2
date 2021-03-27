@@ -5,12 +5,17 @@ var quit = false
 
 #onready var music = get_node("Music")
 #onready var button_sound = get_node("ButtonSound")
-onready var animationPlayer = $Menu/CenterRow/Character2D/AnimationPlayer
+onready var animationPlayer = $Character2D/AnimationPlayer
+onready var starAnimationPlayer = $StarCharacter2D/StarAnimationPlayer
+onready var starAnimationMover = $StarCharacter2D/StarAnimationMover
 onready var newgamebutton = $Menu/CenterRow/Buttons/MainButtons/NewGameButton
 onready var quitbutton = $Menu/CenterRow/Buttons/MainButtons/QuitButton
+onready var an
 
 func _ready():
 	animationPlayer.play("MenuRun")
+	starAnimationPlayer.play("MenuStarIdle")
+	starAnimationMover.play("MenuStarMove")
 	
 	newgamebutton.connect("pressed", self, "_on_Button_pressed", [newgamebutton.scene_to_load])
 	quitbutton.connect("pressed", self, "_on_Button_pressed", [quitbutton.scene_to_load])
