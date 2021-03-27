@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://game_screen/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Action RPG Resources/Player/Player.png" type="Texture" id=2]
+[ext_resource path="res://game_screen/HitHurtBoxes/HitBox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.06911
@@ -36,6 +37,18 @@ tracks/1/keys = {
 "method": "attack_animation_finished"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "AttackLeft"
@@ -65,6 +78,18 @@ tracks/1/keys = {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -96,6 +121,18 @@ tracks/1/keys = {
 "method": "attack_animation_finished"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "AttackUp"
@@ -125,6 +162,18 @@ tracks/1/keys = {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -352,6 +401,9 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=34]
 
+[sub_resource type="CapsuleShape2D" id=35]
+height = 12.0
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -362,7 +414,7 @@ __meta__ = {
 position = Vector2( -0.0496063, -7.937 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 36
+frame = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0613403, 0.045517 )
@@ -390,3 +442,16 @@ parameters/playback = SubResource( 34 )
 parameters/Attack/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
+
+[node name="HitboxPivot" type="Position2D" parent="."]
+position = Vector2( 0, -3.67496 )
+rotation = -1.5708
+
+[node name="AttackHitBox" parent="HitboxPivot" instance=ExtResource( 3 )]
+position = Vector2( 15, 0 )
+
+[node name="CollisionShape2D" parent="HitboxPivot/AttackHitBox" index="0"]
+position = Vector2( -0.111366, -1.00226 )
+shape = SubResource( 35 )
+
+[editable path="HitboxPivot/AttackHitBox"]
