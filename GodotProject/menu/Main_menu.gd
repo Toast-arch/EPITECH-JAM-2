@@ -6,8 +6,8 @@ var quit = false
 #onready var music = get_node("Music")
 #onready var button_sound = get_node("ButtonSound")
 onready var animationPlayer = $Character2D/AnimationPlayer
-onready var starAnimationPlayer = $StarCharacter2D/StarAnimationPlayer
-onready var starAnimationMover = $StarCharacter2D/StarAnimationMover
+onready var starAnimationPlayer = $Character2D/StarCharacter2D/StarAnimationPlayer
+onready var starAnimationMover = $Character2D/StarCharacter2D/StarAnimationMover
 onready var newgamebutton = $Menu/CenterRow/Buttons/MainButtons/NewGameButton
 onready var quitbutton = $Menu/CenterRow/Buttons/MainButtons/QuitButton
 onready var an

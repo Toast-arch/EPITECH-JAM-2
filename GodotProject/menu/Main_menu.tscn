@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Action RPG Resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://assets/Action RPG Resources/UI/flags.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/Action RPG Resources/Effects/StarSprites.png" type="Texture" id=14]
 [ext_resource path="res://assets/Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=15]
 [ext_resource path="res://menu/assets/epitech-logo-signature-quadri.png" type="Texture" id=16]
+[ext_resource path="res://game_screen/WorldScenes/ChatBubble.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 length = 0.6
@@ -95,7 +96,7 @@ format = 1
 tile_data = PoolIntArray( -65536, 0, 0, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 2, 0, 0, 131072, 1, 0, 131073, 2, 0, 65542, 3, 0, 65537, 4, 0, 65537, 5, 0, 65537, 6, 0, 65537, 7, 0, 65541, 8, 0, 131073, 9, 0, 131074, 65538, 0, 131072, 65539, 0, 131073, 65540, 0, 131073, 65541, 0, 131073, 65542, 0, 131073, 65543, 0, 131074 )
 
 [node name="Character2D" type="Node2D" parent="."]
-position = Vector2( 256, 104 )
+position = Vector2( 213.478, 132.978 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -114,23 +115,26 @@ offset = Vector2( 0, 18 )
 method_call_mode = 1
 anims/MenuRun = SubResource( 1 )
 
-[node name="StarCharacter2D" type="Node2D" parent="."]
-position = Vector2( 221.507, 73.0712 )
+[node name="StarCharacter2D" type="Node2D" parent="Character2D"]
+position = Vector2( -34.493, -30.9288 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="StarCharacter2D"]
+[node name="Sprite" type="Sprite" parent="Character2D/StarCharacter2D"]
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 14 )
 hframes = 8
 frame = 7
 
-[node name="StarAnimationPlayer" type="AnimationPlayer" parent="StarCharacter2D"]
+[node name="StarAnimationPlayer" type="AnimationPlayer" parent="Character2D/StarCharacter2D"]
 anims/MenuStarIdle = SubResource( 2 )
 
-[node name="StarAnimationMover" type="AnimationPlayer" parent="StarCharacter2D"]
+[node name="StarAnimationMover" type="AnimationPlayer" parent="Character2D/StarCharacter2D"]
 anims/MenuStarMove = SubResource( 3 )
+
+[node name="ChatBubble" parent="Character2D" instance=ExtResource( 17 )]
+position = Vector2( 40.3175, -42.8373 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_left = 10.0

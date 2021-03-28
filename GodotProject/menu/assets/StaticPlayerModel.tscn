@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Action RPG Resources/Effects/StarSprites.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "MenuStarIdle"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "MenuStarMove"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6, 3 ),
+"transitions": PoolRealArray( 0.420448, 0.406126, 0.450625 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 75, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="StarCharacter2D" type="Node2D"]
+position = Vector2( -34.493, -30.9288 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+hframes = 8
+frame = 7
+
+[node name="StarAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/MenuStarIdle = SubResource( 2 )
+
+[node name="StarAnimationMover" type="AnimationPlayer" parent="."]
+anims/MenuStarMove = SubResource( 3 )

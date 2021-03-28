@@ -132,7 +132,7 @@ ui_attack={
 
 [locale]
 
-translations=PoolStringArray( "res://menu/assets/GodotCSV.de.translation", "res://menu/assets/GodotCSV.en.translation", "res://menu/assets/GodotCSV.es.translation", "res://menu/assets/GodotCSV.fr.translation" )
+translations=PoolStringArray( "res://menu/assets/GodotCSV2.de.translation", "res://menu/assets/GodotCSV2.en.translation", "res://menu/assets/GodotCSV2.es.translation", "res://menu/assets/GodotCSV2.fr.translation" )
 
 [rendering]
 
