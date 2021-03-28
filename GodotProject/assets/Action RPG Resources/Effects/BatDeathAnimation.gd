@@ -4,7 +4,7 @@ onready var animatedSprite = $AnimatedSprite
 
 func _ready():
 	animatedSprite.frame = 0
-	animatedSprite.play("GrassAnim")
+	animatedSprite.play("BatDeathAnim")
 
 func _on_AnimatedSprite_animation_finished():
 	queue_free()

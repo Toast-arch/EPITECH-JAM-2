@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Action RPG Resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://assets/Action RPG Resources/UI/flags.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://game_screen/WorldScenes/Tree.tscn" type="PackedScene" id=12]
 [ext_resource path="res://game_screen/WorldScenes/Grass.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Action RPG Resources/Effects/StarSprites.png" type="Texture" id=14]
+[ext_resource path="res://assets/Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=1]
 length = 0.6
@@ -100,8 +101,13 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Character2D"]
 scale = Vector2( 1.5, 1.5 )
+z_index = 1
 texture = ExtResource( 1 )
 hframes = 60
+
+[node name="ShadowSprite" type="Sprite" parent="Character2D"]
+texture = ExtResource( 15 )
+offset = Vector2( 0, 18 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character2D"]
 method_call_mode = 1
@@ -147,7 +153,8 @@ position = Vector2( 286, 168 )
 position = Vector2( 230, 136 )
 
 [node name="Bush4" parent="Menu/Bushes" instance=ExtResource( 10 )]
-position = Vector2( 122.465, 75.6106 )
+position = Vector2( 119.869, 77.0264 )
+z_index = -1
 
 [node name="Trees" type="Node2D" parent="Menu"]
 
@@ -158,6 +165,7 @@ position = Vector2( 288.847, 51.6322 )
 position = Vector2( 9.14874, 50.3079 )
 
 [node name="Grass" type="Node2D" parent="Menu"]
+position = Vector2( -9.01018, -7.67534 )
 
 [node name="Grass" parent="Menu/Grass" instance=ExtResource( 13 )]
 position = Vector2( 160.476, 71.9512 )
@@ -221,18 +229,19 @@ position = Vector2( 2.35093, 131.016 )
 
 [node name="Title" type="Label" parent="Menu"]
 margin_right = 310.0
-margin_bottom = 50.0
+margin_bottom = 51.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color_shadow = Color( 0, 0.529412, 1, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 3
-text = "BATTLE DUO"
+text = "GASPARD x 
+ALDEBARAN"
 align = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
-margin_top = 54.0
+margin_top = 55.0
 margin_right = 310.0
 margin_bottom = 176.0
 size_flags_vertical = 3
@@ -240,15 +249,15 @@ custom_constants/separation = 100
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
 margin_right = 180.0
-margin_bottom = 122.0
+margin_bottom = 121.0
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
 
 [node name="MainButtons" type="VBoxContainer" parent="Menu/CenterRow/Buttons"]
-margin_top = 14.0
+margin_top = 13.0
 margin_right = 180.0
-margin_bottom = 68.0
+margin_bottom = 67.0
 
 [node name="NewGameButton" parent="Menu/CenterRow/Buttons/MainButtons" instance=ExtResource( 3 )]
 margin_right = 180.0
@@ -260,9 +269,9 @@ margin_right = 180.0
 margin_bottom = 54.0
 
 [node name="FlagsSelector" type="HBoxContainer" parent="Menu/CenterRow/Buttons"]
-margin_top = 88.0
+margin_top = 87.0
 margin_right = 110.0
-margin_bottom = 108.0
+margin_bottom = 107.0
 rect_min_size = Vector2( 110, 20 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
