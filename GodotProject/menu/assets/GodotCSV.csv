@@ -1,4 +1,11 @@
 ,en,de,fr,es
 new_game,New Game,Neues Spiel,Nouvelle Partie,Nuevo juego
 quit,Quit,Verlassen,Quitter,Salida
-quote1,Fear cuts depper than swords,Angst schneidet schärfer als Schwerter,La peur coupe plus profondément qu'une épée,El miedo corta más profundo que las espadas
+quote1,Fear cuts depper than swords,Angst schneidet scharfer als Schwerter,La peur coupe plus profondement qu'une epee,El miedo corta mas profundo que las espadas
+game_over,Game Over,Niederlage,Defaite,Fracaso
+quote2,"Alone we go faster.
+Together we go further.","Alleine gehen wir schneller.
+Gemeinsam gehen wir weiter.","Seul on va plus vite.
+A deux on va plus loin.","Solos vamos mas rapido.
+Juntos llegamos mas lejos."
+press_any_key,press any key to continue...,zum Weitermachen eine Taste betatigen...,appuyer sur une touche pour continuer...,pulse cualquier tecla para continuar...

@@ -30,7 +30,8 @@ func _on_FadeIn_fade_finished():
 	if quit:
 		get_tree().quit()
 	if scene_path != "NONE":
-		print(get_tree().change_scene(scene_path))
+		get_tree().change_scene("res://game_screen/GameScreen.tscn")
+		PlayerStats.reset()
 	else:
 		$FadeIn.hide()
 
@@ -39,7 +40,6 @@ func _on_QuitButton_pressed():
 	quit = true
 	$FadeIn.show()
 	$FadeIn.fade_in()
-
 
 func _on_AudioStreamPlayer_finished():
 	pass

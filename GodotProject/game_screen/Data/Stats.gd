@@ -8,6 +8,10 @@ signal no_health
 signal health_changed(value)
 signal coins_changed(value)
 
+func reset():
+	coins = 0
+	health = max_health
+
 func set_coins(value):
 	coins = value
 	emit_signal("coins_changed", coins)

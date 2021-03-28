@@ -25,11 +25,18 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitBox = $HitboxPivot/AttackHitBox
 onready var hurtBox = $HurtBox
 
+signal game_over
+
 func _ready():
-	stats.connect("no_health", self, "queue_free")
+	stats.connect("no_health", self, "die")
 	animationTree.active = true
 	swordHitBox.knockback_vector = roll_vector
 	print(swordHitBox.knockback_vector)
+
+func die():
+	print("player died")
+	emit_signal("game_over")
+	queue_free()
 
 func _physics_process(delta):
 	match state:

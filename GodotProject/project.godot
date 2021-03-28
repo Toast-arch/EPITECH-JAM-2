@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Epitech JAM"
-run/main_scene="res://game_screen/GameScreen.tscn"
+config/name="BALTAZARD"
+run/main_scene="res://menu/Main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

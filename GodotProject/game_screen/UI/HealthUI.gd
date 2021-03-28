@@ -7,6 +7,9 @@ onready var heartTexture = $HeartUIFull
 
 func set_hearts(value):
 	hearts = clamp(value, 0 , max_hearts)
+	if hearts == 0:
+		heartTexture.hide()
+		
 	if heartTexture != null:
 		heartTexture.rect_size = Vector2(15 * hearts, 11)
 
