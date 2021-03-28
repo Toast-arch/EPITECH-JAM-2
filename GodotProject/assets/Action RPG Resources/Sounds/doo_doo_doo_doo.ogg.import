@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/doo_doo_doo_doo.ogg-5744f2e32edeba62591f8ccff62b6d3f.oggstr"
+
+[deps]
+
+source_file="res://assets/Action RPG Resources/Sounds/doo_doo_doo_doo.ogg"
+dest_files=[ "res://.import/doo_doo_doo_doo.ogg-5744f2e32edeba62591f8ccff62b6d3f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
