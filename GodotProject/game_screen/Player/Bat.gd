@@ -13,6 +13,7 @@ onready var stats = $Stats
 onready var playerDetection = $PlayerDetection
 onready var sprite = $Sprite
 onready var hurtBox = $HurtBox
+onready var sheild = $Sheild
 
 enum {
 	IDLE,
@@ -21,6 +22,14 @@ enum {
 }
 
 var state = CHASE
+var sheilded = true
+
+func _ready():
+	sheild.connect("sheild_destroyed", self, "sheild_destroyed")
+
+func sheild_destroyed():
+	sheilded = false
+	print("sheild go boom")
 
 func look_for_player():
 	if playerDetection.player_locked():
@@ -49,7 +58,8 @@ func _physics_process(delta):
 
 func _on_HurtBox_area_entered(area):
 	print("bat hit")
-	stats.health -= 1
+	if !sheilded:
+		stats.health -= 1
 	knockback = area.knockback_vector * 140
 	hurtBox.hit_effect()
 

@@ -10,7 +10,7 @@ func set_coins(value):
 	coins = value
 	if label != null:
 		label.text = str(coins)
-	if coins >= 10:
+	if coins >= 25:
 		emit_signal("victory")
 
 func _ready():

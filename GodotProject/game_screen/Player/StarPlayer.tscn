@@ -47,7 +47,7 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="StarPlayerHitBox" parent="." instance=ExtResource( 3 )]
-collision_mask = 160
+collision_mask = 416
 
 [node name="CollisionShape2D" parent="StarPlayerHitBox" index="0"]
 shape = SubResource( 3 )

@@ -20,7 +20,8 @@ func set_invincible(value):
 
 func start_invincibility(duration):
 	self.invincible = true
-	timer.start(duration)
+	if duration != 0:
+		timer.start(duration)
 
 func hit_effect():
 	var effect = HitEffect.instance()
@@ -31,10 +32,8 @@ func hit_effect():
 func _on_Timer_timeout():
 	self.invincible = false
 
-
 func _on_HurtBox_invincibility_started():
 	set_deferred("monitorable", false)
 
-
 func _on_HurtBox_invincibility_ended():
-		set_deferred("monitorable", true)
+	set_deferred("monitorable", true)
