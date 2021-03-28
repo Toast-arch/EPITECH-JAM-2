@@ -1123,15 +1123,6 @@ smoothing_speed = 10.0
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Bat" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 320, 32 )
-
-[node name="Bat2" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 112, 24 )
-
-[node name="Bat3" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 168, 216 )
-
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 240, 136 )
 
@@ -1140,6 +1131,110 @@ remote_path = NodePath("../../../MainCamera")
 
 [node name="StarPlayer" parent="YSort/Player" instance=ExtResource( 7 )]
 position = Vector2( -40, -32 )
+
+[node name="Bats" type="YSort" parent="YSort"]
+
+[node name="Bat" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -160, -32 )
+
+[node name="Bat2" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -392, -96 )
+
+[node name="Bat3" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -472, 96 )
+
+[node name="Bat4" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -632, -248 )
+
+[node name="Bat5" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -800, -440 )
+
+[node name="Bat6" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -1104, -240 )
+
+[node name="Bat7" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -1176, -120 )
+
+[node name="Bat8" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -936, -624 )
+
+[node name="Bat9" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -256, -672 )
+
+[node name="Bat10" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 616, -352 )
+
+[node name="Bat11" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 464, -592 )
+
+[node name="Bat12" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 744, -608 )
+
+[node name="Bat13" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1088, -448 )
+
+[node name="Bat14" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1488, -80 )
+
+[node name="Bat15" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1624, -48 )
+
+[node name="Bat16" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 944, 208 )
+
+[node name="Bat17" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1000, 552 )
+
+[node name="Bat18" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1120, 560 )
+
+[node name="Bat19" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1336, 832 )
+
+[node name="Bat20" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1592, 760 )
+
+[node name="Bat21" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 1600, 408 )
+
+[node name="Bat22" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 872, 840 )
+
+[node name="Bat23" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 584, 736 )
+
+[node name="Bat24" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 160, 832 )
+
+[node name="Bat25" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -168, 648 )
+
+[node name="Bat26" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -600, 824 )
+
+[node name="Bat27" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -1048, 824 )
+
+[node name="Bat28" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -1264, 408 )
+
+[node name="Bat29" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -872, 416 )
+
+[node name="Bat30" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -1024, 96 )
+
+[node name="Bat31" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -1256, -608 )
+
+[node name="Bat32" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( -88, -280 )
+
+[node name="Bat33" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 288, 576 )
+
+[node name="Bat34" parent="YSort/Bats" instance=ExtResource( 9 )]
+position = Vector2( 688, -72 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -5719,6 +5814,66 @@ position = Vector2( 1648, 432 )
 
 [node name="Heart" parent="YSort/Hearts" instance=ExtResource( 13 )]
 position = Vector2( -80, 32 )
+
+[node name="Heart2" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -248, -128 )
+
+[node name="Heart3" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -592, -96 )
+
+[node name="Heart4" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -784, -24 )
+
+[node name="Heart5" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -1240, 40 )
+
+[node name="Heart6" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -1040, -424 )
+
+[node name="Heart7" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -520, -464 )
+
+[node name="Heart8" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 400, -432 )
+
+[node name="Heart9" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 800, -392 )
+
+[node name="Heart10" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 1168, -128 )
+
+[node name="Heart11" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 1224, 168 )
+
+[node name="Heart12" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 840, 296 )
+
+[node name="Heart13" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 520, 344 )
+
+[node name="Heart14" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 712, 560 )
+
+[node name="Heart15" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 1296, 584 )
+
+[node name="Heart16" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 560, 880 )
+
+[node name="Heart17" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -176, 832 )
+
+[node name="Heart18" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -688, 344 )
+
+[node name="Heart19" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -1256, 864 )
+
+[node name="Heart20" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( -40, -616 )
+
+[node name="Heart21" parent="YSort/Hearts" instance=ExtResource( 13 )]
+position = Vector2( 1640, -648 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
