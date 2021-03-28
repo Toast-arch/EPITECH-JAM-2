@@ -17,12 +17,16 @@ var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.LEFT
 
+var stats = PlayerStats
+
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitBox = $HitboxPivot/AttackHitBox
+onready var hurtBox = $HurtBox
 
 func _ready():
+	stats.connect("no_health", self, "queue_free")
 	animationTree.active = true
 	swordHitBox.knockback_vector = roll_vector
 	print(swordHitBox.knockback_vector)
@@ -65,4 +69,9 @@ func attack(delta):
 
 func attack_animation_finished():
 	state = MOVE
-	
+
+func _on_HurtBox_area_entered(area):
+	print("player hit")
+	stats.health -= 1
+	hurtBox.start_invincibility(1)
+	hurtBox.hit_effect()

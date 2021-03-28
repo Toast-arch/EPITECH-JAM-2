@@ -12,6 +12,7 @@ const FRICTION = 200
 onready var stats = $Stats
 onready var playerDetection = $PlayerDetection
 onready var sprite = $Sprite
+onready var hurtBox = $HurtBox
 
 enum {
 	IDLE,
@@ -47,8 +48,10 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 
 func _on_HurtBox_area_entered(area):
+	print("bat hit")
 	stats.health -= 1
 	knockback = area.knockback_vector * 140
+	hurtBox.hit_effect()
 
 func _on_Stats_no_health():
 	queue_free()
